@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Biocal Calculator</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #ffffff; }
+    iframe { width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Embeds your Streamlit link seamlessly -->
+  <iframe src="https://biocal-code-2vfvt2vfahuqwjoikisuq7.streamlit.app/"></iframe>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(reg => console.log('Service Worker registered successfully!'))
+          .catch(err => console.log('Service Worker registration failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>
