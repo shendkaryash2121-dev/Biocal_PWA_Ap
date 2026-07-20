@@ -3,23 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Biocal Calculator</title>
+  <title>BioCal</title>
   <link rel="manifest" href="manifest.json">
   <style>
-    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #ffffff; }
+    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: Arial, sans-serif; background-color: #ffffff; }
+    
+    /* The Download Banner at the top */
+    .download-banner {
+      background-color: #1e1e1e;
+      color: #ffffff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      height: 40px;
+    }
+    .download-banner a {
+      color: #ff4b4b;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 15px;
+    }
+    .download-banner a:hover { text-decoration: underline; }
+    
+    /* Container for the remaining screen area */
+    .app-container {
+      height: calc(100% - 60px); /* Adjusts height so iframe fits perfectly below the banner */
+      width: 100%;
+    }
     iframe { width: 100%; height: 100%; border: none; }
+    
+    /* Small QR image thumbnail styling */
+    .qr-thumb {
+      height: 35px;
+      width: 35px;
+      cursor: pointer;
+      border: 1px solid #fff;
+    }
   </style>
 </head>
 <body>
 
-  
-  <iframe src="https://biocal-code-2vfvt2vfahuqwjoikisuq7.streamlit.app/?embed=true"></iframe>
+  <!-- Top Banner giving reference to the APK and QR code -->
+  <div class="download-banner">
+    <div>
+      <span>🧬 Welcome to BioCal! </span>
+      <a href="https://shendkaryash2121-dev.github.io/Biocal_PWA_Ap/BioCal.apk" download>📥 Download Android APK</a>
+    </div>
+    <div>
+      <!-- Displays your QR code thumbnail in the corner -->
+      <span style="margin-right: 8px;">Scan to share:</span>
+      <img src="qrcode.png" class="qr-thumb" alt="QR Code" onclick="alert('Scan this QR code on another phone to download the BioCal APK directly!')">
+    </div>
+  </div>
+
+  <!-- Your working Streamlit Calculator Frame -->
+  <div class="app-container">
+    <iframe src="https://biocal-code-2vfvt2vfahuqwjoikisuq7.streamlit.app/?embed=true"></iframe>
+  </div>
+
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
-          .then(reg => console.log('Service Worker registered successfully!'))
-          .catch(err => console.log('Service Worker registration failed:', err));
+          .then(reg => console.log('Service Worker registered!'))
+          .catch(err => console.log('Service Worker failed:', err));
       });
     }
   </script>
